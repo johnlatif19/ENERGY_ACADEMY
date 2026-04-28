@@ -163,7 +163,7 @@ const sendEmailNotification = async (subject, htmlContent) => {
     }
 
     const mailOptions = {
-      from: `"Clan DH-ESPORTS" <${process.env.SMTP_USER}>`,
+      from: `"Clan ENERGY-ACADEMY" <${process.env.SMTP_USER}>`,
       to: process.env.NOTIFICATION_EMAIL,
       subject,
       html: htmlContent,
@@ -492,7 +492,7 @@ app.post('/admin/send-message', isAdminAuthenticated, async (req, res) => {
     await transporter.sendMail({
       from: `"${senderName}" <${process.env.SMTP_USER}>`,
       to: email,
-      subject: 'رسالة من كلان Clan DH-ESPORTS',
+      subject: 'رسالة من كلان Clan ENERGY-ACADEMY',
       html: `
 <div dir="rtl" style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
   <h2 style="color: #4f46e5;">رسالة من Clan DH-ESPORTS</h2>
@@ -500,7 +500,7 @@ app.post('/admin/send-message', isAdminAuthenticated, async (req, res) => {
     ${String(message || '').replace(/\n/g, '<br>')}
   </div>
   <p style="margin-top: 30px; color: #6b7280; font-size: 14px;">
-    هذه الرسالة مرسلة من نظام Clan DH-ESPORTS- لا ترد على هذا البريد
+    هذه الرسالة مرسلة من نظام Clan ENERGY-ACADEMY- لا ترد على هذا البريد
     اذا احتجت الرد ابعت رسالتك هنا ${process.env.FRONTEND_URL || ''}/#inquiries
   </p>
 </div>
