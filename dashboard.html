@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>لوحة التحكم • Clan DH-ESPORTS</title>
+  <title>لوحة التحكم • ENERGY ACADEMY</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <!-- خط عربي أنيق -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,142 +15,133 @@
   <style>
     html { font-family: "Cairo", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
     
-    /* تخصيص شريط التمرير */
     .nice-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
-    .nice-scroll::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.4); border-radius: 9999px; }
+    .nice-scroll::-webkit-scrollbar-thumb { background: rgba(34, 240, 170, 0.5); border-radius: 9999px; }
     .nice-scroll::-webkit-scrollbar-track { background: transparent; }
 
-    /* تأثيرات زجاجية مخصصة */
+    /* تصميم زجاجي بنمط الطاقة (أخضر / ذهبي) */
     .glass-panel {
-      background: rgba(20, 20, 35, 0.6);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(59, 130, 246, 0.2);
+      background: rgba(8, 15, 25, 0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(34, 240, 170, 0.3);
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     }
 
     .glass-panel:hover {
-      border-color: rgba(59, 130, 246, 0.5);
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+      border-color: rgba(255, 191, 64, 0.6);
+      box-shadow: 0 0 25px rgba(34, 240, 170, 0.25);
     }
 
-    /* الوضع المظلم للوحات الزجاجية */
     html.dark .glass-panel {
-      background: rgba(10, 10, 20, 0.85);
-      border-color: rgba(59, 130, 246, 0.25);
+      background: rgba(3, 8, 18, 0.88);
+      border-color: rgba(34, 240, 170, 0.3);
     }
 
-    /* أزرار نيون - أزرق */
+    /* أزرار نيون بطاقة الطاقة */
     .neon-button {
-      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      background: linear-gradient(95deg, #0fdd8c, #ffb347);
       border: none;
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px #3b82f6;
+      box-shadow: 0 0 12px #0fdd8c;
     }
     .neon-button:hover {
       transform: scale(1.02);
-      box-shadow: 0 0 20px #3b82f6, 0 0 30px #60a5fa;
+      box-shadow: 0 0 22px #22f0aa, 0 0 18px #ffb347;
     }
     .neon-button:active { transform: scale(0.98); }
 
-    /* بطاقات الإحصائيات */
+    /* بطاقات إحصاءات */
     .stat-card {
-      background: rgba(26, 26, 46, 0.8);
+      background: rgba(10, 18, 28, 0.8);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(59, 130, 246, 0.3);
+      border: 1px solid rgba(34, 240, 170, 0.35);
       border-radius: 1.5rem;
       transition: all 0.3s;
     }
     .stat-card:hover {
-      border-color: #3b82f6;
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+      border-color: #ffb347;
+      box-shadow: 0 0 22px rgba(255, 180, 71, 0.4);
     }
 
     /* الجداول */
     .table-header {
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.4);
       color: #cbd5e1;
-      font-weight: 600;
+      font-weight: 700;
     }
     .table-row {
       transition: background 0.2s;
     }
     .table-row:hover {
-      background: rgba(59, 130, 246, 0.1) !important;
+      background: rgba(34, 240, 170, 0.08) !important;
     }
 
     /* حقول الإدخال */
     .input-field {
-      background: rgba(0, 0, 0, 0.3) !important;
-      border: 1px solid #2d2d44 !important;
+      background: rgba(0, 0, 0, 0.4) !important;
+      border: 1px solid #2a3a44 !important;
       color: #fff !important;
       border-radius: 1rem !important;
       transition: all 0.3s;
     }
     .input-field:focus {
-      border-color: #3b82f6 !important;
-      box-shadow: 0 0 15px #3b82f6 !important;
+      border-color: #22f0aa !important;
+      box-shadow: 0 0 18px rgba(34, 240, 170, 0.5) !important;
       outline: none;
     }
 
-    /* خلفية الجسم - متحركة وجذابة */
+    /* خلفية ديناميكية */
     body {
-      background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 40%),
-                  radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 35%),
-                  linear-gradient(135deg, #0a0a1a 0%, #0f0f1a 100%);
+      background: radial-gradient(circle at 10% 20%, rgba(34, 240, 170, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 80%, rgba(255, 179, 71, 0.07) 0%, transparent 40%),
+                  linear-gradient(135deg, #020617 0%, #030712 100%);
       background-attachment: fixed;
     }
 
     html.dark body {
-      background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 40%),
-                  radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 35%),
-                  linear-gradient(135deg, #050510 0%, #0a0a18 100%);
+      background: radial-gradient(circle at 10% 20%, rgba(34, 240, 170, 0.05) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 80%, rgba(255, 179, 71, 0.04) 0%, transparent 40%),
+                  linear-gradient(135deg, #00010c 0%, #030511 100%);
     }
 
     /* شريط جانبي */
     #sidebar {
-      background: rgba(15, 15, 25, 0.92);
-      backdrop-filter: blur(16px);
-      border-left: 1px solid rgba(59, 130, 246, 0.3);
+      background: rgba(5, 12, 20, 0.92);
+      backdrop-filter: blur(18px);
+      border-left: 1px solid rgba(34, 240, 170, 0.35);
     }
 
     html.dark #sidebar {
-      background: rgba(8, 8, 18, 0.95);
+      background: rgba(2, 5, 14, 0.96);
     }
 
-    /* عناصر القائمة */
+    /* عناصر القائمة النشطة */
     .nav-item.active {
-      background: rgba(59, 130, 246, 0.15);
-      border-right: 3px solid #3b82f6;
+      background: rgba(34, 240, 170, 0.12);
+      border-right: 3px solid #ffb347;
     }
 
-    /* التبويب النشط */
     .nav-item.active span:first-child {
-      background: #3b82f6 !important;
-      color: white !important;
+      background: #0fdd8c !important;
+      color: #030712 !important;
     }
 
     /* أزرار الإجراءات */
     .action-btn {
       background: rgba(255,255,255,0.05);
       border-radius: 1rem;
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 0.9rem;
       transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
     }
     .action-btn:hover {
-      background: rgba(59, 130, 246, 0.2);
+      background: rgba(34, 240, 170, 0.2);
     }
 
-    /* تحسينات ريسponsive */
-    @media (max-width: 768px) {
-      .stat-card { padding: 1rem; }
-      .action-btn span { display: none; }
-      .action-btn i { margin: 0; }
-      .action-btn { padding: 0.5rem 0.75rem; }
-      td, th { padding-left: 0.75rem; padding-right: 0.75rem; }
-    }
-
-    /* أنيميشن للـ toasts */
+    /* توست (إشعارات) */
     @keyframes slideIn {
       from { transform: translateX(100%); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
@@ -160,24 +150,25 @@
       animation: slideIn 0.3s ease-out;
     }
 
-    /* تحسين التمرير */
-    .overflow-auto {
-      scroll-behavior: smooth;
+    @media (max-width: 768px) {
+      .stat-card { padding: 1rem; }
+      .action-btn span { display: none; }
+      .action-btn i { margin: 0; }
+      .action-btn { padding: 0.45rem 0.8rem; }
+      td, th { padding-left: 0.6rem; padding-right: 0.6rem; }
     }
   </style>
 </head>
 
 <body class="text-gray-200">
 
-  <!-- Toasts -->
   <div id="toastHost" class="fixed top-4 left-4 right-4 md:left-auto md:right-4 z-[60] space-y-2 max-w-md"></div>
 
-  <!-- Mobile backdrop -->
   <div id="backdrop" class="fixed inset-0 bg-black/60 hidden z-40 backdrop-blur-sm transition-all duration-300"></div>
 
   <div class="min-h-screen">
     <div class="lg:flex">
-      <!-- Sidebar -->
+      <!-- Sidebar - ENERGY ACADEMY -->
       <aside
         id="sidebar"
         class="fixed lg:sticky top-0 right-0 z-50 lg:z-10 h-screen w-[280px] lg:w-[280px]
@@ -186,15 +177,14 @@
                translate-x-full lg:translate-x-0
                flex flex-col"
       >
-        <!-- Brand -->
         <div class="h-16 px-4 flex items-center justify-between border-b border-primary-light/20 shrink-0">
           <a href="dashboard.html" class="flex items-center gap-3">
-            <div class="h-10 w-10 rounded-2xl grid place-items-center bg-gradient-to-br from-blue-500 to-indigo-500 text-white shadow-lg">
-              <i class="fas fa-dragon"></i>
+            <div class="h-10 w-10 rounded-2xl grid place-items-center bg-gradient-to-br from-green-400 to-amber-500 text-white shadow-lg">
+              <i class="fas fa-bolt"></i>
             </div>
             <div class="leading-tight">
-              <div class="font-bold text-white text-lg tracking-tight">DH-ESPORTS</div>
-              <div class="text-xs text-gray-400">Clan Admin Panel</div>
+              <div class="font-bold text-white text-lg tracking-tight">ENERGY ACADEMY</div>
+              <div class="text-xs text-gray-400">منصة القادة</div>
             </div>
           </a>
           <button id="closeSidebarMobile" class="lg:hidden h-10 w-10 rounded-xl hover:bg-white/10">
@@ -202,18 +192,13 @@
           </button>
         </div>
 
-        <!-- User mini card -->
         <div class="p-4 shrink-0">
           <div class="rounded-2xl p-3 bg-black/20 border border-primary-light/20">
             <div class="flex items-center gap-3">
-              <img
-                src="https://ui-avatars.com/api/?name=Admin&background=3b82f6&color=fff&bold=true"
-                alt="Admin"
-                class="w-10 h-10 rounded-2xl border border-primary-light"
-              />
+              <img src="https://ui-avatars.com/api/?name=ENERGY&background=0fdd8c&color=fff&bold=true" alt="Admin" class="w-10 h-10 rounded-2xl border border-primary-light" />
               <div class="flex-1">
                 <div class="font-semibold">الإدارة العامة</div>
-                <div class="text-xs text-gray-400">Super Admin</div>
+                <div class="text-xs text-gray-400">Super Admin ⚡</div>
               </div>
               <button id="toggleDarkMode" class="h-10 w-10 rounded-xl border border-primary-light/30 hover:bg-primary-light/20 transition-colors">
                 <i class="fas fa-moon"></i>
@@ -223,972 +208,104 @@
           </div>
         </div>
 
-        <!-- Nav - قابل للتمرير -->
         <nav class="flex-1 overflow-y-auto nice-scroll px-3">
           <ul class="space-y-1">
-            <li>
-              <a href="#" data-tab="dashboard"
-                 class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-2xl
-                        text-gray-300 hover:text-white
-                        hover:bg-primary-light/10
-                        transition-all duration-200">
-                <span class="h-9 w-9 rounded-xl grid place-items-center bg-blue-500/20 text-blue-400">
-                  <i class="fas fa-tachometer-alt"></i>
-                </span>
-                <span class="font-semibold">لوحة التحكم</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" data-tab="bookings"
-                 class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-2xl
-                        text-gray-300 hover:text-white
-                        hover:bg-primary-light/10
-                        transition-all duration-200">
-                <span class="h-9 w-9 rounded-xl grid place-items-center bg-sky-500/20 text-sky-400">
-                  <i class="fas fa-users"></i>
-                </span>
-                <span class="font-semibold">طلبات الانضمام</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" data-tab="messages"
-                 class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-2xl
-                        text-gray-300 hover:text-white
-                        hover:bg-primary-light/10
-                        transition-all duration-200">
-                <span class="h-9 w-9 rounded-xl grid place-items-center bg-emerald-500/20 text-emerald-400">
-                  <i class="fas fa-envelope"></i>
-                </span>
-                <span class="font-semibold">إرسال رسائل</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" data-tab="inquiries"
-                 class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-2xl
-                        text-gray-300 hover:text-white
-                        hover:bg-primary-light/10
-                        transition-all duration-200">
-                <span class="h-9 w-9 rounded-xl grid place-items-center bg-amber-500/20 text-amber-400">
-                  <i class="fas fa-question-circle"></i>
-                </span>
-                <span class="font-semibold">الاستفسارات</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" data-tab="results"
-                 class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-2xl
-                        text-gray-300 hover:text-white
-                        hover:bg-primary-light/10
-                        transition-all duration-200">
-                <span class="h-9 w-9 rounded-xl grid place-items-center bg-violet-500/20 text-violet-400">
-                  <i class="fas fa-check-circle"></i>
-                </span>
-                <span class="font-semibold">النتائج المعتمدة</span>
-              </a>
-            </li>
-
-            <li class="pt-4 mt-2 border-t border-primary-light/20">
-              <a href="/admin/logout" id="logoutBtn"
-                 class="flex items-center gap-3 px-3 py-2.5 rounded-2xl
-                        text-rose-300 hover:text-rose-200
-                        hover:bg-rose-500/10
-                        transition-all duration-200">
-                <span class="h-9 w-9 rounded-xl grid place-items-center bg-rose-500/20 text-rose-400">
-                  <i class="fas fa-sign-out-alt"></i>
-                </span>
-                <span class="font-semibold">تسجيل الخروج</span>
-              </a>
-            </li>
+            <li><a href="#" data-tab="dashboard" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-2xl text-gray-300 hover:text-white hover:bg-primary-light/10 transition-all duration-200"><span class="h-9 w-9 rounded-xl grid place-items-center bg-green-500/20 text-green-400"><i class="fas fa-tachometer-alt"></i></span><span class="font-semibold">لوحة التحكم</span></a></li>
+            <li><a href="#" data-tab="bookings" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-2xl text-gray-300 hover:text-white hover:bg-primary-light/10 transition-all duration-200"><span class="h-9 w-9 rounded-xl grid place-items-center bg-sky-500/20 text-sky-400"><i class="fas fa-users"></i></span><span class="font-semibold">طلبات الانضمام</span></a></li>
+            <li><a href="#" data-tab="messages" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-2xl text-gray-300 hover:text-white hover:bg-primary-light/10 transition-all duration-200"><span class="h-9 w-9 rounded-xl grid place-items-center bg-emerald-500/20 text-emerald-400"><i class="fas fa-envelope"></i></span><span class="font-semibold">إرسال رسائل</span></a></li>
+            <li><a href="#" data-tab="inquiries" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-2xl text-gray-300 hover:text-white hover:bg-primary-light/10 transition-all duration-200"><span class="h-9 w-9 rounded-xl grid place-items-center bg-amber-500/20 text-amber-400"><i class="fas fa-question-circle"></i></span><span class="font-semibold">الاستفسارات</span></a></li>
+            <li><a href="#" data-tab="results" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-2xl text-gray-300 hover:text-white hover:bg-primary-light/10 transition-all duration-200"><span class="h-9 w-9 rounded-xl grid place-items-center bg-violet-500/20 text-violet-400"><i class="fas fa-check-circle"></i></span><span class="font-semibold">النتائج المعتمدة</span></a></li>
+            <li class="pt-4 mt-2 border-t border-primary-light/20"><a href="/admin/logout" id="logoutBtn" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-rose-300 hover:text-rose-200 hover:bg-rose-500/10 transition-all duration-200"><span class="h-9 w-9 rounded-xl grid place-items-center bg-rose-500/20 text-rose-400"><i class="fas fa-sign-out-alt"></i></span><span class="font-semibold">تسجيل الخروج</span></a></li>
           </ul>
         </nav>
 
-        <!-- Footer -->
         <div class="shrink-0 p-4">
           <div class="text-xs text-gray-500 text-center border-t border-primary-light/20 pt-4">
-            © <span id="yearNow"></span> Clan DH-ESPORTS
+            © <span id="yearNow"></span> ENERGY ACADEMY
           </div>
         </div>
       </aside>
 
       <!-- Main Content -->
       <div class="lg:flex-1 lg:mr-[280px] min-h-screen">
-        <!-- Topbar -->
         <header class="sticky top-0 z-30 glass-panel border-b border-primary-light/20 backdrop-blur-lg">
           <div class="h-16 px-4 sm:px-6 flex items-center justify-between">
             <div class="flex items-center gap-3">
-              <button id="openSidebarMobile"
-                      class="lg:hidden h-10 w-10 rounded-xl border border-primary-light/30
-                             hover:bg-primary-light/20 transition-colors">
-                <i class="fas fa-bars text-xl"></i>
-              </button>
-
-              <div>
-                <h1 id="pageTitle" class="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                  لوحة التحكم
-                </h1>
-              </div>
+              <button id="openSidebarMobile" class="lg:hidden h-10 w-10 rounded-xl border border-primary-light/30 hover:bg-primary-light/20 transition-colors"><i class="fas fa-bars text-xl"></i></button>
+              <div><h1 id="pageTitle" class="text-lg sm:text-xl font-bold bg-gradient-to-r from-green-400 to-amber-400 bg-clip-text text-transparent">لوحة التحكم</h1></div>
             </div>
-
-            <div class="flex items-center gap-3">
-              <div class="hidden md:flex items-center gap-2 text-xs text-gray-400 bg-black/20 px-3 py-1.5 rounded-full">
-                <i class="fa-regular fa-circle-check text-blue-400"></i>
-                <span>Session Active | DH-ESPORTS</span>
-              </div>
-            </div>
+            <div class="flex items-center gap-3"><div class="hidden md:flex items-center gap-2 text-xs text-gray-400 bg-black/20 px-3 py-1.5 rounded-full"><i class="fa-regular fa-circle-check text-green-400"></i><span>جلسة نشطة | ENERGY-ACADEMY</span></div></div>
           </div>
         </header>
 
-        <!-- Content -->
         <main class="p-4 sm:p-6">
           <!-- Dashboard Tab -->
           <section id="dashboardTab" class="tab-content space-y-6">
-            <!-- KPIs -->
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-              <div class="stat-card p-5 group">
-                <div class="flex items-start justify-between gap-4">
-                  <div>
-                    <div class="text-sm text-gray-400">طلبات الانضمام</div>
-                    <div class="text-4xl font-extrabold mt-1 text-white" id="totalBookings">0</div>
-                    <a href="#" data-tab="bookings" class="inline-flex items-center gap-2 mt-3 text-sm font-semibold text-blue-400 hover:underline group-hover:gap-3 transition-all">
-                      عرض الكل <i class="fas fa-arrow-left text-xs"></i>
-                    </a>
-                  </div>
-                  <div class="h-12 w-12 rounded-2xl grid place-items-center bg-blue-500/20 text-blue-400 group-hover:scale-110 transition-transform">
-                    <i class="fas fa-users text-xl"></i>
-                  </div>
-                </div>
-              </div>
-
-              <div class="stat-card p-5 group">
-                <div class="flex items-start justify-between gap-4">
-                  <div>
-                    <div class="text-sm text-gray-400">الاستفسارات الجديدة</div>
-                    <div class="text-4xl font-extrabold mt-1 text-white" id="newInquiries">0</div>
-                    <a href="#" data-tab="inquiries" class="inline-flex items-center gap-2 mt-3 text-sm font-semibold text-amber-400 hover:underline group-hover:gap-3 transition-all">
-                      عرض الكل <i class="fas fa-arrow-left text-xs"></i>
-                    </a>
-                  </div>
-                  <div class="h-12 w-12 rounded-2xl grid place-items-center bg-amber-500/20 text-amber-400 group-hover:scale-110 transition-transform">
-                    <i class="fas fa-envelope text-xl"></i>
-                  </div>
-                </div>
-              </div>
-
-              <div class="stat-card p-5 group">
-                <div class="flex items-start justify-between gap-4">
-                  <div>
-                    <div class="text-sm text-gray-400">الطلبات المعتمدة</div>
-                    <div class="text-4xl font-extrabold mt-1 text-white" id="approvedResults">0</div>
-                    <a href="#" data-tab="results" class="inline-flex items-center gap-2 mt-3 text-sm font-semibold text-violet-400 hover:underline group-hover:gap-3 transition-all">
-                      عرض الكل <i class="fas fa-arrow-left text-xs"></i>
-                    </a>
-                  </div>
-                  <div class="h-12 w-12 rounded-2xl grid place-items-center bg-violet-500/20 text-violet-400 group-hover:scale-110 transition-transform">
-                    <i class="fas fa-check-circle text-xl"></i>
-                  </div>
-                </div>
-              </div>
+              <div class="stat-card p-5 group"><div class="flex items-start justify-between gap-4"><div><div class="text-sm text-gray-400">طلبات الانضمام</div><div class="text-4xl font-extrabold mt-1 text-white" id="totalBookings">0</div><a href="#" data-tab="bookings" class="inline-flex items-center gap-2 mt-3 text-sm font-semibold text-green-400 hover:underline group-hover:gap-3 transition-all">عرض الكل <i class="fas fa-arrow-left text-xs"></i></a></div><div class="h-12 w-12 rounded-2xl grid place-items-center bg-green-500/20 text-green-400 group-hover:scale-110 transition-transform"><i class="fas fa-users text-xl"></i></div></div></div>
+              <div class="stat-card p-5 group"><div class="flex items-start justify-between gap-4"><div><div class="text-sm text-gray-400">الاستفسارات الجديدة</div><div class="text-4xl font-extrabold mt-1 text-white" id="newInquiries">0</div><a href="#" data-tab="inquiries" class="inline-flex items-center gap-2 mt-3 text-sm font-semibold text-amber-400 hover:underline group-hover:gap-3 transition-all">عرض الكل <i class="fas fa-arrow-left text-xs"></i></a></div><div class="h-12 w-12 rounded-2xl grid place-items-center bg-amber-500/20 text-amber-400 group-hover:scale-110 transition-transform"><i class="fas fa-envelope text-xl"></i></div></div></div>
+              <div class="stat-card p-5 group"><div class="flex items-start justify-between gap-4"><div><div class="text-sm text-gray-400">الطلبات المعتمدة</div><div class="text-4xl font-extrabold mt-1 text-white" id="approvedResults">0</div><a href="#" data-tab="results" class="inline-flex items-center gap-2 mt-3 text-sm font-semibold text-violet-400 hover:underline group-hover:gap-3 transition-all">عرض الكل <i class="fas fa-arrow-left text-xs"></i></a></div><div class="h-12 w-12 rounded-2xl grid place-items-center bg-violet-500/20 text-violet-400 group-hover:scale-110 transition-transform"><i class="fas fa-check-circle text-xl"></i></div></div></div>
             </div>
 
-            <!-- Recent bookings -->
             <div class="glass-panel rounded-3xl shadow-lg overflow-hidden">
-              <div class="p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-primary-light/20">
-                <div>
-                  <h2 class="text-lg font-bold text-white">آخر الطلبات</h2>
-                  <p class="text-xs text-gray-400 mt-0.5">عرض آخر 5 طلبات بشكل مرتب</p>
-                </div>
-                <div class="flex items-center gap-2 text-xs text-gray-400 bg-black/20 px-3 py-1.5 rounded-full">
-                  <i class="fas fa-table text-blue-400"></i><span>تحديث تلقائي</span>
-                </div>
-              </div>
-              <div class="overflow-x-auto nice-scroll">
-                <table class="min-w-full text-sm">
-                  <thead class="table-header">
-                    <tr>
-                      <th class="px-4 sm:px-5 py-3 text-right font-semibold">الاسم</th>
-                      <th class="px-4 sm:px-5 py-3 text-right font-semibold">رقم الهاتف</th>
-                      <th class="px-4 sm:px-5 py-3 text-right font-semibold hidden sm:table-cell">الفريمات</th>
-                      <th class="px-4 sm:px-5 py-3 text-right font-semibold">الحالة</th>
-                      <th class="px-4 sm:px-5 py-3 text-right font-semibold hidden md:table-cell">التاريخ</th>
-                    </tr>
-                  </thead>
-                  <tbody id="recentBookings" class="divide-y divide-primary-light/10">
-                  </tbody>
-                </table>
-              </div>
+              <div class="p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-primary-light/20"><div><h2 class="text-lg font-bold text-white">آخر الطلبات</h2><p class="text-xs text-gray-400 mt-0.5">آخر 5 طلبات انضمام</p></div><div class="flex items-center gap-2 text-xs text-gray-400 bg-black/20 px-3 py-1.5 rounded-full"><i class="fas fa-bolt text-green-400"></i><span>تحديث فوري</span></div></div>
+              <div class="overflow-x-auto nice-scroll"><table class="min-w-full text-sm"><thead class="table-header"><tr><th class="px-4 sm:px-5 py-3 text-right font-semibold">الاسم</th><th class="px-4 sm:px-5 py-3 text-right font-semibold">الهاتف</th><th class="px-4 sm:px-5 py-3 text-right font-semibold hidden sm:table-cell">الفريمات</th><th class="px-4 sm:px-5 py-3 text-right font-semibold">الحالة</th><th class="px-4 sm:px-5 py-3 text-right font-semibold hidden md:table-cell">التاريخ</th></tr></thead><tbody id="recentBookings" class="divide-y divide-primary-light/10"></tbody></table></div>
             </div>
           </section>
 
-          <!-- بقية الأقسام (Bookings, Messages, Inquiries, Results) -->
-          <!-- Bookings Tab -->
-          <section id="bookingsTab" class="tab-content hidden space-y-4">
-            <div class="glass-panel rounded-3xl shadow-lg overflow-hidden">
-              <div class="p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-primary-light/20">
-                <div>
-                  <h2 class="text-lg font-bold text-white">طلبات الانضمام</h2>
-                  <p class="text-xs text-gray-400 mt-0.5">فلتر سريع + جدول متجاوب</p>
-                </div>
-                <div class="flex items-center gap-2">
-                  <select id="bookingFilter"
-                          class="h-10 rounded-2xl px-4 input-field text-sm">
-                    <option value="all">الكل</option>
-                    <option value="pending">قيد الانتظار</option>
-                    <option value="approved">مقبولة</option>
-                    <option value="rejected">مرفوضة</option>
-                  </select>
-                </div>
-              </div>
+          <section id="bookingsTab" class="tab-content hidden space-y-4"><div class="glass-panel rounded-3xl overflow-hidden"><div class="p-5 flex flex-wrap gap-3 justify-between items-center border-b border-primary-light/20"><h2 class="text-lg font-bold text-white">طلبات الانضمام</h2><select id="bookingFilter" class="h-10 rounded-2xl px-4 input-field text-sm"><option value="all">الكل</option><option value="pending">قيد الانتظار</option><option value="approved">مقبولة</option><option value="rejected">مرفوضة</option></select></div><div class="overflow-x-auto"><table class="min-w-[800px] lg:min-w-full text-sm"><thead class="table-header"><tr><th class="px-4 py-3">الاسم</th><th class="px-4 py-3 hidden sm:table-cell">البريد</th><th class="px-4 py-3">الهاتف</th><th class="px-4 py-3 hidden lg:table-cell">المركز</th><th class="px-4 py-3">الفريمات</th><th class="px-4 py-3 hidden md:table-cell">السن</th><th class="px-4 py-3">الحالة</th><th class="px-4 py-3">إجراءات</th></tr></thead><tbody id="bookingsTable"></tbody></table></div></div></section>
 
-              <div class="overflow-x-auto nice-scroll">
-                <table class="min-w-[800px] lg:min-w-full text-sm">
-                  <thead class="table-header">
-                    <tr>
-                      <th class="px-4 py-3 text-right font-semibold">الاسم</th>
-                      <th class="px-4 py-3 text-right font-semibold hidden sm:table-cell">البريد</th>
-                      <th class="px-4 py-3 text-right font-semibold">الهاتف</th>
-                      <th class="px-4 py-3 text-right font-semibold hidden lg:table-cell">مركزك في الاسكريم</th>
-                      <th class="px-4 py-3 text-right font-semibold">الفريمات</th>
-                      <th class="px-4 py-3 text-right font-semibold hidden md:table-cell">السن</th>
-                      <th class="px-4 py-3 text-right font-semibold">الحالة</th>
-                      <th class="px-4 py-3 text-right font-semibold">الإجراءات</th>
-                    </tr>
-                  </thead>
-                  <tbody id="bookingsTable" class="divide-y divide-primary-light/10">
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </section>
+          <section id="messagesTab" class="tab-content hidden space-y-6"><div class="grid grid-cols-1 xl:grid-cols-2 gap-6"><div class="glass-panel rounded-3xl"><div class="p-5 border-b border-primary-light/20"><h2 class="text-lg font-bold text-white">إرسال رسالة إلى لاعب</h2></div><div class="p-5"><form id="sendMessageForm" class="space-y-4"><div><label class="block text-sm font-semibold mb-1">البريد الإلكتروني</label><input type="email" id="playerEmail" required class="w-full h-11 input-field"></div><div><label class="block text-sm font-semibold mb-1">اسم المرسل</label><input type="text" id="senderName" placeholder="ENERGY ACADEMY" class="w-full h-11 input-field"></div><div><label class="block text-sm font-semibold mb-1">الرسالة</label><textarea id="messageContent" rows="5" required class="w-full input-field py-3"></textarea></div><button type="submit" class="neon-button h-11 px-5 rounded-2xl font-bold text-white w-full sm:w-auto"><i class="fas fa-paper-plane ml-2"></i> إرسال</button></form><div id="messageResponse" class="mt-4 hidden"></div></div></div>
+          <div class="glass-panel rounded-3xl"><div class="p-5 border-b"><h2 class="text-lg font-bold text-white">رفع نتيجة لاعب</h2></div><div class="p-5"><form id="uploadResultForm" enctype="multipart/form-data" class="space-y-4"><div><label class="block text-sm font-semibold mb-1">رقم الهاتف</label><input type="tel" id="playerPhone" required class="w-full h-11 input-field"></div><div><label class="block text-sm font-semibold mb-1">اسم اللاعب (اختياري)</label><input type="text" id="playerName" class="w-full h-11 input-field"></div><div><label class="block text-sm font-semibold mb-1">ملف النتيجة (PDF/صورة)</label><input type="file" id="resultFile" accept=".pdf,.jpg,.jpeg,.png" class="w-full input-field py-2"></div><button type="submit" class="neon-button h-11 px-5 rounded-2xl font-bold text-white w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-green-500"><i class="fas fa-cloud-upload-alt ml-2"></i> رفع</button></form><div id="uploadResponse" class="mt-4 hidden"></div></div></div></div></section>
 
-          <!-- Messages Tab -->
-          <section id="messagesTab" class="tab-content hidden space-y-6">
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
-              <div class="glass-panel rounded-3xl shadow-lg">
-                <div class="p-5 border-b border-primary-light/20">
-                  <h2 class="text-lg font-bold text-white">إرسال رسالة إلى اللاعب</h2>
-                  <p class="text-xs text-gray-400 mt-0.5">نموذج بسيط وواضح</p>
-                </div>
-                <div class="p-5">
-                  <form id="sendMessageForm" class="space-y-4">
-                    <div>
-                      <label class="block text-sm font-semibold mb-1 text-gray-300">البريد الإلكتروني للاعب</label>
-                      <input type="email" id="playerEmail" required class="w-full h-11 input-field">
-                    </div>
-                    <div>
-                      <label class="block text-sm font-semibold mb-1 text-gray-300">اسم المرسل (اختياري)</label>
-                      <input type="text" id="senderName" placeholder="DH-ESPORTS Admin" class="w-full h-11 input-field">
-                    </div>
-                    <div>
-                      <label class="block text-sm font-semibold mb-1 text-gray-300">الرسالة</label>
-                      <textarea id="messageContent" rows="5" required class="w-full input-field py-3"></textarea>
-                    </div>
-                    <button type="submit" class="neon-button h-11 px-5 rounded-2xl font-bold text-white w-full sm:w-auto">
-                      <i class="fas fa-paper-plane ml-2"></i> إرسال
-                    </button>
-                  </form>
-                  <div id="messageResponse" class="mt-4 hidden"></div>
-                </div>
-              </div>
+          <section id="inquiriesTab" class="tab-content hidden space-y-4"><div class="glass-panel rounded-3xl overflow-hidden"><div class="p-5 flex flex-wrap justify-between items-center gap-3 border-b"><h2 class="text-lg font-bold text-white">الاستفسارات</h2><select id="inquiryFilter" class="h-10 rounded-2xl px-4 input-field text-sm"><option value="all">الكل</option><option value="new">جديدة</option><option value="responded">تم الرد</option></select></div><div class="overflow-x-auto"><table class="min-w-[800px] lg:min-w-full text-sm"><thead class="table-header"><tr><th class="px-4 py-3">الاسم</th><th class="px-4 py-3 hidden sm:table-cell">البريد</th><th class="px-4 py-3">الهاتف</th><th class="px-4 py-3">الرسالة</th><th class="px-4 py-3">الحالة</th><th class="px-4 py-3">إجراءات</th></tr></thead><tbody id="inquiriesTable"></tbody></table></div></div></section>
 
-              <div class="glass-panel rounded-3xl shadow-lg">
-                <div class="p-5 border-b border-primary-light/20">
-                  <h2 class="text-lg font-bold text-white">رفع نتيجة اللاعب</h2>
-                  <p class="text-xs text-gray-400 mt-0.5">رفع ملفات PDF/صور بشكل مرتب</p>
-                </div>
-                <div class="p-5">
-                  <form id="uploadResultForm" enctype="multipart/form-data" class="space-y-4">
-                    <div>
-                      <label class="block text-sm font-semibold mb-1 text-gray-300">رقم هاتف اللاعب</label>
-                      <input type="tel" id="playerPhone" required class="w-full h-11 input-field">
-                    </div>
-                    <div>
-                      <label class="block text-sm font-semibold mb-1 text-gray-300">اسم اللاعب (اختياري)</label>
-                      <input type="text" id="playerName" class="w-full h-11 input-field">
-                    </div>
-                    <div>
-                      <label class="block text-sm font-semibold mb-1 text-gray-300">ملف النتيجة</label>
-                      <input type="file" id="resultFile" name="resultFile" required accept=".pdf,.jpg,.jpeg,.png" class="w-full input-field py-2 file:bg-blue-500 file:border-0 file:text-white file:rounded-xl file:px-4 file:py-2 file:ml-2 file:hover:bg-blue-600 transition-colors">
-                    </div>
-                    <button type="submit" class="neon-button h-11 px-5 rounded-2xl font-bold text-white w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-green-500">
-                      <i class="fas fa-cloud-upload-alt ml-2"></i> رفع
-                    </button>
-                  </form>
-                  <div id="uploadResponse" class="mt-4 hidden"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Inquiries Tab -->
-          <section id="inquiriesTab" class="tab-content hidden space-y-4">
-            <div class="glass-panel rounded-3xl shadow-lg overflow-hidden">
-              <div class="p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-primary-light/20">
-                <div>
-                  <h2 class="text-lg font-bold text-white">الاستفسارات</h2>
-                  <p class="text-xs text-gray-400 mt-0.5">فلترة (جديدة/تم الرد)</p>
-                </div>
-                <select id="inquiryFilter" class="h-10 rounded-2xl px-4 input-field text-sm">
-                  <option value="all">الكل</option>
-                  <option value="new">جديدة</option>
-                  <option value="responded">تم الرد</option>
-                </select>
-              </div>
-              <div class="overflow-x-auto nice-scroll">
-                <table class="min-w-[800px] lg:min-w-full text-sm">
-                  <thead class="table-header">
-                    <tr>
-                      <th class="px-4 py-3 text-right font-semibold">الاسم</th>
-                      <th class="px-4 py-3 text-right font-semibold hidden sm:table-cell">البريد</th>
-                      <th class="px-4 py-3 text-right font-semibold">الهاتف</th>
-                      <th class="px-4 py-3 text-right font-semibold">الرسالة</th>
-                      <th class="px-4 py-3 text-right font-semibold">الحالة</th>
-                      <th class="px-4 py-3 text-right font-semibold">الإجراءات</th>
-                    </tr>
-                  </thead>
-                  <tbody id="inquiriesTable" class="divide-y divide-primary-light/10"></tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-
-          <!-- Results Tab -->
-          <section id="resultsTab" class="tab-content hidden space-y-4">
-            <div class="glass-panel rounded-3xl shadow-lg overflow-hidden">
-              <div class="p-5 border-b border-primary-light/20">
-                <h2 class="text-lg font-bold text-white">النتائج المعتمدة</h2>
-                <p class="text-xs text-gray-400 mt-0.5">جدول بسيط + أزرار واضحة</p>
-              </div>
-              <div class="overflow-x-auto nice-scroll">
-                <table class="min-w-[600px] lg:min-w-full text-sm">
-                  <thead class="table-header">
-                    <tr>
-                      <th class="px-4 py-3 text-right font-semibold">الاسم</th>
-                      <th class="px-4 py-3 text-right font-semibold">رقم الهاتف</th>
-                      <th class="px-4 py-3 text-right font-semibold hidden sm:table-cell">تاريخ القبول</th>
-                      <th class="px-4 py-3 text-right font-semibold">الإجراءات</th>
-                    </tr>
-                  </thead>
-                  <tbody id="resultsTable" class="divide-y divide-primary-light/10"></tbody>
-                </table>
-              </div>
-            </div>
-          </section>
+          <section id="resultsTab" class="tab-content hidden space-y-4"><div class="glass-panel rounded-3xl overflow-hidden"><div class="p-5 border-b"><h2 class="text-lg font-bold text-white">النتائج المعتمدة</h2></div><div class="overflow-x-auto"><table class="min-w-[600px] lg:min-w-full text-sm"><thead class="table-header"><tr><th class="px-4 py-3">الاسم</th><th class="px-4 py-3">رقم الهاتف</th><th class="px-4 py-3 hidden sm:table-cell">تاريخ القبول</th><th class="px-4 py-3">الإجراءات</th></tr></thead><tbody id="resultsTable"></tbody></table></div></div></section>
         </main>
       </div>
     </div>
   </div>
 
-  <!-- Modal containers (بنفس الهيكل الأصلي ولكن بتحسينات) -->
-  <div id="editBookingModal" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div><div class="absolute inset-0 flex items-center justify-center p-4"><div class="w-full max-w-md rounded-3xl glass-panel shadow-2xl"><div class="p-4 flex items-center justify-between border-b border-primary-light/20"><h3 class="font-bold text-white">تعديل حالة الطلب</h3><button id="closeBookingModal" class="h-10 w-10 rounded-2xl hover:bg-white/10"><i class="fas fa-times"></i></button></div><div class="p-5"><form id="editBookingForm" class="space-y-4"><input type="hidden" id="editBookingId"><div><label class="block text-sm font-semibold mb-1 text-gray-300">الحالة</label><select id="editBookingStatus" class="w-full h-11 input-field"><option value="pending">قيد الانتظار</option><option value="approved">مقبول</option><option value="rejected">مرفوض</option></select></div><div><label class="block text-sm font-semibold mb-1 text-gray-300">ملاحظات</label><textarea id="editBookingNotes" rows="3" class="w-full input-field py-3"></textarea></div><div class="flex justify-end gap-2"><button type="button" id="cancelBookingEdit" class="h-11 px-4 rounded-2xl border border-primary-light/30 hover:bg-white/10 text-gray-300">إلغاء</button><button type="submit" class="h-11 px-4 rounded-2xl neon-button font-bold text-white">حفظ</button></div></form></div></div></div></div>
-
-  <div id="respondInquiryModal" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div><div class="absolute inset-0 flex items-center justify-center p-4"><div class="w-full max-w-md rounded-3xl glass-panel shadow-2xl"><div class="p-4 flex items-center justify-between border-b border-primary-light/20"><h3 class="font-bold text-white">الرد على الاستفسار</h3><button id="closeInquiryModal" class="h-10 w-10 rounded-2xl hover:bg-white/10"><i class="fas fa-times"></i></button></div><div class="p-5"><form id="respondInquiryForm" class="space-y-4"><input type="hidden" id="respondInquiryId"><div><label class="block text-sm font-semibold mb-1 text-gray-300">الرد</label><textarea id="inquiryResponse" rows="4" class="w-full input-field py-3"></textarea></div><div class="flex justify-end gap-2"><button type="button" id="cancelInquiryResponse" class="h-11 px-4 rounded-2xl border border-primary-light/30 hover:bg-white/10 text-gray-300">إلغاء</button><button type="submit" class="h-11 px-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-green-500 font-bold text-white">إرسال الرد</button></div></form></div></div></div></div>
-
-  <div id="editResultModal" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div><div class="absolute inset-0 flex items-center justify-center p-4"><div class="w-full max-w-md rounded-3xl glass-panel shadow-2xl"><div class="p-4 flex items-center justify-between border-b border-primary-light/20"><h3 class="font-bold text-white">تعديل النتيجة</h3><button id="closeResultModal" class="h-10 w-10 rounded-2xl hover:bg-white/10"><i class="fas fa-times"></i></button></div><div class="p-5"><form id="editResultForm" enctype="multipart/form-data" class="space-y-4"><input type="hidden" id="editResultId" name="id"><div><label class="block text-sm font-semibold mb-1 text-gray-300">رقم هاتف اللاعب *</label><input type="tel" id="editPlayerPhone" name="playerPhone" required class="w-full h-11 input-field"></div><div><label class="block text-sm font-semibold mb-1 text-gray-300">اسم اللاعب</label><input type="text" id="editPlayerName" class="w-full h-11 input-field"></div><div><label class="block text-sm font-semibold mb-1 text-gray-300">ملف النتيجة الجديدة (اختياري)</label><input type="file" id="editResultFile" name="editResultFile" accept=".pdf,.jpg,.jpeg,.png" class="w-full input-field py-2 file:bg-blue-500 file:border-0 file:text-white file:rounded-xl file:px-4 file:py-2 file:ml-2"></div><div class="flex justify-end gap-2"><button type="button" id="cancelResultEdit" class="h-11 px-4 rounded-2xl border border-primary-light/30 hover:bg-white/10 text-gray-300">إلغاء</button><button type="submit" class="h-11 px-4 rounded-2xl neon-button font-bold text-white">حفظ التعديلات</button></div></form></div></div></div></div>
-
-  <div id="deleteBookingModal" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div><div class="absolute inset-0 flex items-center justify-center p-4"><div class="w-full max-w-md rounded-3xl glass-panel shadow-2xl"><div class="p-4 border-b border-primary-light/20"><h3 class="font-bold text-white">حذف الطلب</h3></div><div class="p-5 space-y-4"><p class="text-sm text-gray-300">هل أنت متأكد من حذف هذا الطلب؟</p><input type="hidden" id="deleteBookingId"><div class="flex justify-end gap-2"><button type="button" id="cancelDeleteBooking" class="h-11 px-4 rounded-2xl border border-primary-light/30 hover:bg-white/10 text-gray-300">إلغاء</button><button type="button" id="confirmDeleteBooking" class="h-11 px-4 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-bold">حذف</button></div></div></div></div></div>
-
-  <div id="deleteInquiryModal" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div><div class="absolute inset-0 flex items-center justify-center p-4"><div class="w-full max-w-md rounded-3xl glass-panel shadow-2xl"><div class="p-4 border-b border-primary-light/20"><h3 class="font-bold text-white">حذف الاستفسار</h3></div><div class="p-5 space-y-4"><p class="text-sm text-gray-300">هل أنت متأكد من حذف هذا الاستفسار؟</p><input type="hidden" id="deleteInquiryId"><div class="flex justify-end gap-2"><button type="button" id="cancelDeleteInquiry" class="h-11 px-4 rounded-2xl border border-primary-light/30 hover:bg-white/10 text-gray-300">إلغاء</button><button type="button" id="confirmDeleteInquiry" class="h-11 px-4 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-bold">حذف</button></div></div></div></div></div>
+  <!-- Modals: نفس الفكرة ولكن بألوان الأكاديمية -->
+  <div id="editBookingModal" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div><div class="absolute inset-0 flex items-center justify-center p-4"><div class="w-full max-w-md rounded-3xl glass-panel shadow-2xl"><div class="p-4 flex items-center justify-between border-b border-primary-light/20"><h3 class="font-bold text-white">تعديل حالة الطلب</h3><button id="closeBookingModal" class="h-10 w-10 rounded-2xl hover:bg-white/10"><i class="fas fa-times"></i></button></div><div class="p-5"><form id="editBookingForm" class="space-y-4"><input type="hidden" id="editBookingId"><div><label class="block text-sm font-semibold mb-1">الحالة</label><select id="editBookingStatus" class="w-full h-11 input-field"><option value="pending">قيد الانتظار</option><option value="approved">مقبول</option><option value="rejected">مرفوض</option></select></div><div><label class="block text-sm font-semibold mb-1">ملاحظات</label><textarea id="editBookingNotes" rows="3" class="w-full input-field py-3"></textarea></div><div class="flex justify-end gap-2"><button type="button" id="cancelBookingEdit" class="h-11 px-4 rounded-2xl border border-primary-light/30 hover:bg-white/10">إلغاء</button><button type="submit" class="h-11 px-4 rounded-2xl neon-button font-bold text-white">حفظ</button></div></form></div></div></div></div>
+  <div id="respondInquiryModal" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div><div class="absolute inset-0 flex items-center justify-center p-4"><div class="w-full max-w-md rounded-3xl glass-panel"><div class="p-4 flex items-center justify-between border-b"><h3 class="font-bold text-white">الرد على الاستفسار</h3><button id="closeInquiryModal" class="h-10 w-10 rounded-2xl hover:bg-white/10"><i class="fas fa-times"></i></button></div><div class="p-5"><form id="respondInquiryForm" class="space-y-4"><input type="hidden" id="respondInquiryId"><div><label class="block text-sm font-semibold mb-1">الرد</label><textarea id="inquiryResponse" rows="4" class="w-full input-field py-3"></textarea></div><div class="flex justify-end gap-2"><button type="button" id="cancelInquiryResponse" class="h-11 px-4 rounded-2xl border border-primary-light/30">إلغاء</button><button type="submit" class="h-11 px-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-green-500 font-bold text-white">إرسال الرد</button></div></form></div></div></div></div>
+  <div id="editResultModal" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div><div class="absolute inset-0 flex items-center justify-center p-4"><div class="w-full max-w-md rounded-3xl glass-panel"><div class="p-4 flex items-center justify-between border-b"><h3 class="font-bold text-white">تعديل النتيجة</h3><button id="closeResultModal" class="h-10 w-10 rounded-2xl hover:bg-white/10"><i class="fas fa-times"></i></button></div><div class="p-5"><form id="editResultForm" enctype="multipart/form-data" class="space-y-4"><input type="hidden" id="editResultId" name="id"><div><label class="block text-sm font-semibold mb-1">رقم الهاتف *</label><input type="tel" id="editPlayerPhone" name="playerPhone" required class="w-full h-11 input-field"></div><div><label class="block text-sm font-semibold mb-1">اسم اللاعب</label><input type="text" id="editPlayerName" class="w-full h-11 input-field"></div><div><label class="block text-sm font-semibold mb-1">ملف النتيجة (اختياري)</label><input type="file" id="editResultFile" name="editResultFile" accept=".pdf,.jpg,.jpeg,.png" class="w-full input-field py-2"></div><div class="flex justify-end gap-2"><button type="button" id="cancelResultEdit" class="h-11 px-4 rounded-2xl border border-primary-light/30">إلغاء</button><button type="submit" class="h-11 px-4 rounded-2xl neon-button font-bold text-white">حفظ التعديلات</button></div></form></div></div></div></div>
+  <div id="deleteBookingModal" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div><div class="absolute inset-0 flex items-center justify-center p-4"><div class="w-full max-w-md rounded-3xl glass-panel"><div class="p-4 border-b"><h3 class="font-bold text-white">حذف الطلب</h3></div><div class="p-5"><p class="text-sm text-gray-300">هل أنت متأكد من حذف هذا الطلب؟</p><input type="hidden" id="deleteBookingId"><div class="flex justify-end gap-2 mt-4"><button id="cancelDeleteBooking" class="h-11 px-4 rounded-2xl border border-primary-light/30">إلغاء</button><button id="confirmDeleteBooking" class="h-11 px-4 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-bold">حذف</button></div></div></div></div></div>
+  <div id="deleteInquiryModal" class="fixed inset-0 hidden z-[70]"><div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div><div class="absolute inset-0 flex items-center justify-center p-4"><div class="w-full max-w-md rounded-3xl glass-panel"><div class="p-4 border-b"><h3 class="font-bold text-white">حذف الاستفسار</h3></div><div class="p-5"><p class="text-sm text-gray-300">هل أنت متأكد من حذف هذا الاستفسار؟</p><input type="hidden" id="deleteInquiryId"><div class="flex justify-end gap-2 mt-4"><button id="cancelDeleteInquiry" class="h-11 px-4 rounded-2xl border border-primary-light/30">إلغاء</button><button id="confirmDeleteInquiry" class="h-11 px-4 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-bold">حذف</button></div></div></div></div></div>
 
   <script>
-    // =========================
-    // جميع الأكواد الجافاسكريبت مع تحسينات الـ Dark Mode والـ Responsive
-    // =========================
     document.getElementById('yearNow').textContent = new Date().getFullYear();
-
-    // تحسين الـ Toast
-    function toast(message, type = "success") {
-      const host = document.getElementById("toastHost");
-      const el = document.createElement("div");
-      const base = "px-4 py-3 rounded-2xl shadow-lg text-sm font-semibold border backdrop-blur flex items-center gap-2";
-      const styles = type === "success"
-        ? "bg-emerald-600/95 text-white border-emerald-400/30"
-        : "bg-rose-600/95 text-white border-rose-400/30";
-
-      const icon = type === "success" ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-exclamation-circle"></i>';
-      
-      el.className = base + " " + styles;
-      el.innerHTML = icon + " " + message;
-      host.appendChild(el);
-
-      setTimeout(() => { el.style.opacity = "0"; el.style.transform = "translateX(20px)"; el.style.transition = "all .3s ease-out"; }, 2700);
-      setTimeout(() => el.remove(), 3100);
-    }
-
-    function getStatusClass(status) {
-      switch(status) {
-        case 'approved': return 'bg-emerald-600/20 text-emerald-300 border border-emerald-500/30';
-        case 'rejected': return 'bg-rose-600/20 text-rose-300 border border-rose-500/30';
-        default: return 'bg-amber-600/20 text-amber-300 border border-amber-500/30';
-      }
-    }
-
-    function getStatusText(status) {
-      switch(status) {
-        case 'approved': return 'مقبول';
-        case 'rejected': return 'مرفوض';
-        default: return 'قيد الانتظار';
-      }
-    }
-
-    function showSuccess(message) { toast(message, "success"); }
-    function showError(message) { toast(message, "error"); }
-
-    // Dark mode متكامل
-    const darkBtn = document.getElementById('toggleDarkMode');
-    const moonIcon = darkBtn.querySelector('.fa-moon');
-    const sunIcon = darkBtn.querySelector('.fa-sun');
-    
-    function applyDarkModeFromStorage() {
-      const isDark = localStorage.getItem('darkMode') === 'true';
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-        moonIcon.classList.add('hidden');
-        sunIcon.classList.remove('hidden');
-      } else {
-        document.documentElement.classList.remove('dark');
-        moonIcon.classList.remove('hidden');
-        sunIcon.classList.add('hidden');
-      }
-    }
-    applyDarkModeFromStorage();
-
-    darkBtn.addEventListener('click', () => {
-      const isDark = !document.documentElement.classList.contains('dark');
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-        moonIcon.classList.add('hidden');
-        sunIcon.classList.remove('hidden');
-      } else {
-        document.documentElement.classList.remove('dark');
-        moonIcon.classList.remove('hidden');
-        sunIcon.classList.add('hidden');
-      }
-      localStorage.setItem('darkMode', isDark);
-    });
-
-    // Sidebar mobile محسن
-    const sidebar = document.getElementById('sidebar');
-    const backdropEl = document.getElementById('backdrop');
-    const openSidebarMobile = document.getElementById('openSidebarMobile');
-    const closeSidebarMobile = document.getElementById('closeSidebarMobile');
-
-    function openSidebar() {
-      sidebar.classList.remove('translate-x-full');
-      backdropEl.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeSidebar() {
-      sidebar.classList.add('translate-x-full');
-      backdropEl.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    if (openSidebarMobile) openSidebarMobile.addEventListener('click', openSidebar);
-    if (closeSidebarMobile) closeSidebarMobile.addEventListener('click', closeSidebar);
-    if (backdropEl) backdropEl.addEventListener('click', closeSidebar);
-
-    // Tabs
-    const navItems = document.querySelectorAll('.nav-item');
-
-    function activateTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-      const target = document.getElementById(tabId + 'Tab');
-      if (target) target.classList.remove('hidden');
-
-      navItems.forEach(i => i.classList.remove('active'));
-      const active = document.querySelector(`.nav-item[data-tab="${tabId}"]`);
-      if (active) {
-        active.classList.add('active');
-        const titleSpan = active.querySelector('span.font-semibold');
-        if (titleSpan) {
-          document.getElementById('pageTitle').textContent = titleSpan.textContent.trim();
-        }
-      }
-
-      if (window.innerWidth < 1024) closeSidebar();
-    }
-
-    navItems.forEach(tab => {
-      tab.addEventListener('click', (e) => {
-        e.preventDefault();
-        activateTab(tab.getAttribute('data-tab'));
-      });
-    });
-
-    activateTab('dashboard');
-
-    // Session + Data
-    async function checkSession() {
-      try {
-        const response = await fetch('/admin/check-session');
-        const data = await response.json();
-        if (!data.loggedIn) {
-          window.location.href = '/admin-login.html';
-        } else {
-          loadData();
-        }
-      } catch (error) {
-        console.error('Error checking session:', error);
-        window.location.href = '/admin-login.html';
-      }
-    }
-
-    async function loadData() {
-      try {
-        const response = await fetch('/admin/data');
-        const data = await response.json();
-
-        document.getElementById('totalBookings').textContent = data.bookings.length;
-        document.getElementById('newInquiries').textContent = data.inquiries.filter(i => i.status === 'new').length;
-        document.getElementById('approvedResults').textContent = data.results.length;
-
-        const recentBookings = data.bookings.slice(0, 5);
-        const recentBookingsHtml = recentBookings.map(booking => `
-          <tr class="table-row hover:bg-primary-light/5">
-            <td class="px-4 sm:px-5 py-3 whitespace-nowrap">${booking.name}</td>
-            <td class="px-4 sm:px-5 py-3 whitespace-nowrap">${booking.phone}</td>
-            <td class="px-4 sm:px-5 py-3 whitespace-nowrap hidden sm:table-cell">${booking.duration}</td>
-            <td class="px-4 sm:px-5 py-3 whitespace-nowrap">
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${getStatusClass(booking.status)}">
-                ${getStatusText(booking.status)}
-              </span>
-            </td>
-            <td class="px-4 sm:px-5 py-3 whitespace-nowrap text-gray-400 hidden md:table-cell">
-              ${new Date(booking.createdAt).toLocaleDateString('ar-EG')}
-            </td>
-          </tr>
-        `).join('');
-        document.getElementById('recentBookings').innerHTML = recentBookingsHtml;
-
-        renderBookingsTable(data.bookings);
-        renderInquiriesTable(data.inquiries);
-        renderResultsTable(data.results);
-
-      } catch (error) {
-        console.error('Error loading data:', error);
-        showError('حدث خطأ أثناء تحميل البيانات، يرجى المحاولة مرة أخرى');
-      }
-    }
-
-    function renderBookingsTable(bookings) {
-      const filter = document.getElementById('bookingFilter').value;
-      let filteredBookings = bookings;
-      if (filter !== 'all') filteredBookings = bookings.filter(b => b.status === filter);
-
-      const bookingsHtml = filteredBookings.map(booking => `
-        <tr class="table-row hover:bg-primary-light/5">
-          <td class="px-4 py-3 whitespace-nowrap">${booking.name}</td>
-          <td class="px-4 py-3 whitespace-nowrap hidden sm:table-cell">${booking.email}</td>
-          <td class="px-4 py-3 whitespace-nowrap">${booking.phone}</td>
-          <td class="px-4 py-3 whitespace-nowrap hidden lg:table-cell">${booking.scrim}</td>
-          <td class="px-4 py-3 whitespace-nowrap">${booking.duration}</td>
-          <td class="px-4 py-3 whitespace-nowrap hidden md:table-cell">${booking.age}</td>
-          <td class="px-4 py-3 whitespace-nowrap">
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${getStatusClass(booking.status)}">
-              ${getStatusText(booking.status)}
-            </span>
-          </td>
-          <td class="px-4 py-3 whitespace-nowrap">
-            <button class="edit-booking action-btn text-indigo-400"
-                    data-id="${booking.id}" data-status="${booking.status}" data-notes="${booking.notes || ''}">
-              <i class="fas fa-edit"></i><span class="hidden sm:inline mr-1">تعديل</span>
-            </button>
-            <button class="delete-booking action-btn text-rose-400"
-                    data-id="${booking.id}">
-              <i class="fas fa-trash"></i><span class="hidden sm:inline mr-1">حذف</span>
-            </button>
-            ${booking.gameVideo ? `
-              <a href="${booking.gameVideo}" target="_blank"
-                 class="action-btn text-sky-400">
-                <i class="fas fa-eye"></i><span class="hidden sm:inline mr-1">فيديو</span>
-              </a>
-              <a href="${booking.gameVideo}" download
-                 class="action-btn text-emerald-400">
-                <i class="fas fa-download"></i><span class="hidden sm:inline mr-1">تحميل</span>
-              </a>
-            ` : ''}
-          </td>
-         </tr>
-      `).join('');
-
-      document.getElementById('bookingsTable').innerHTML = bookingsHtml;
-
-      document.querySelectorAll('.edit-booking').forEach(button => {
-        button.addEventListener('click', () => {
-          document.getElementById('editBookingId').value = button.getAttribute('data-id');
-          document.getElementById('editBookingStatus').value = button.getAttribute('data-status');
-          document.getElementById('editBookingNotes').value = button.getAttribute('data-notes') || '';
-          document.getElementById('editBookingModal').classList.remove('hidden');
-        });
-      });
-
-      document.querySelectorAll('.delete-booking').forEach(button => {
-        button.addEventListener('click', () => {
-          document.getElementById('deleteBookingId').value = button.getAttribute('data-id');
-          document.getElementById('deleteBookingModal').classList.remove('hidden');
-        });
-      });
-    }
-
-    function renderInquiriesTable(inquiries) {
-      const filter = document.getElementById('inquiryFilter').value;
-      let filtered = inquiries;
-      if (filter !== 'all') {
-        filtered = inquiries.filter(i => filter === 'new' ? i.status === 'new' : i.status !== 'new');
-      }
-
-      const inquiriesHtml = filtered.map(inquiry => `
-        <tr class="table-row hover:bg-primary-light/5">
-          <td class="px-4 py-3 whitespace-nowrap">${inquiry.name}</td>
-          <td class="px-4 py-3 whitespace-nowrap hidden sm:table-cell">${inquiry.email}</td>
-          <td class="px-4 py-3 whitespace-nowrap">${inquiry.phone}</td>
-          <td class="px-4 py-3"><div class="max-w-xs truncate text-gray-300">${inquiry.message}</div></td>
-          <td class="px-4 py-3 whitespace-nowrap">
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${
-              inquiry.status === 'new'
-              ? 'bg-amber-600/20 text-amber-300 border border-amber-500/30'
-              : 'bg-emerald-600/20 text-emerald-300 border border-emerald-500/30'
-            }">
-              ${inquiry.status === 'new' ? 'جديد' : 'تم الرد'}
-            </span>
-          </td>
-          <td class="px-4 py-3 whitespace-nowrap">
-            ${inquiry.status === 'new' ? `
-              <button class="respond-inquiry action-btn text-emerald-400"
-                      data-id="${inquiry.id}">
-                <i class="fas fa-reply"></i><span class="hidden sm:inline mr-1">رد</span>
-              </button>
-            ` : ''}
-            <button class="delete-inquiry action-btn text-rose-400"
-                    data-id="${inquiry.id}">
-              <i class="fas fa-trash"></i><span class="hidden sm:inline mr-1">حذف</span>
-            </button>
-            ${inquiry.response ? `
-              <button class="view-response action-btn text-sky-400"
-                      data-response="${inquiry.response.replace(/"/g, '&quot;')}">
-                <i class="fas fa-eye"></i><span class="hidden sm:inline mr-1">عرض</span>
-              </button>
-            ` : ''}
-          </td>
-         </tr>
-      `).join('');
-
-      document.getElementById('inquiriesTable').innerHTML = inquiriesHtml;
-
-      document.querySelectorAll('.respond-inquiry').forEach(button => {
-        button.addEventListener('click', () => {
-          document.getElementById('respondInquiryId').value = button.getAttribute('data-id');
-          document.getElementById('respondInquiryModal').classList.remove('hidden');
-        });
-      });
-
-      document.querySelectorAll('.view-response').forEach(button => {
-        button.addEventListener('click', () => {
-          alert('الرد:\n\n' + (button.getAttribute('data-response') || ''));
-        });
-      });
-
-      document.querySelectorAll('.delete-inquiry').forEach(button => {
-        button.addEventListener('click', () => {
-          document.getElementById('deleteInquiryId').value = button.getAttribute('data-id');
-          document.getElementById('deleteInquiryModal').classList.remove('hidden');
-        });
-      });
-    }
-
-    function renderResultsTable(results) {
-      const resultsTable = document.getElementById('resultsTable');
-
-      if (!results || !Array.isArray(results)) {
-        resultsTable.innerHTML = `<tr><td colspan="4" class="px-5 py-6 text-center text-rose-400">خطأ في تحميل النتائج</td></tr>`;
-        return;
-      }
-
-      if (results.length === 0) {
-        resultsTable.innerHTML = `<tr><td colspan="4" class="px-5 py-6 text-center text-gray-500">لا توجد نتائج معتمدة حتى الآن</td></tr>`;
-        return;
-      }
-
-      const resultsHtml = results.map(result => {
-        const playerName = result.playerName || 'غير معروف';
-        const playerPhone = result.playerPhone || 'غير متوفر';
-        const uploadedAt = result.uploadedAt ? new Date(result.uploadedAt).toLocaleDateString('ar-EG') : 'غير معروف';
-
-        return `
-          <tr class="table-row hover:bg-primary-light/5">
-            <td class="px-4 py-3 whitespace-nowrap">${playerName}</td>
-            <td class="px-4 py-3 whitespace-nowrap">${playerPhone}</td>
-            <td class="px-4 py-3 whitespace-nowrap text-gray-400 hidden sm:table-cell">${uploadedAt}</td>
-            <td class="px-4 py-3 whitespace-nowrap">
-              ${result.fileUrl ? `
-                <a href="${result.fileUrl}" target="_blank"
-                   class="action-btn text-sky-400">
-                  <i class="fas fa-eye"></i><span class="hidden sm:inline mr-1">عرض</span>
-                </a>
-              ` : ''}
-              <button class="edit-result action-btn text-amber-400"
-                      data-id="${result.id}" data-phone="${playerPhone}" data-name="${playerName}">
-                <i class="fas fa-edit"></i><span class="hidden sm:inline mr-1">تعديل</span>
-              </button>
-              <button class="delete-result action-btn text-rose-400"
-                      data-id="${result.id}">
-                <i class="fas fa-trash"></i><span class="hidden sm:inline mr-1">حذف</span>
-              </button>
-            </td>
-           </tr>
-        `;
-      }).join('');
-
-      resultsTable.innerHTML = resultsHtml;
-      bindResultEvents();
-    }
-
-    function bindResultEvents() {
-      document.querySelectorAll('.edit-result').forEach(button => {
-        button.addEventListener('click', () => {
-          document.getElementById('editResultId').value = button.getAttribute('data-id');
-          document.getElementById('editPlayerPhone').value = button.getAttribute('data-phone') || '';
-          document.getElementById('editPlayerName').value = button.getAttribute('data-name') || '';
-          document.getElementById('editResultModal').classList.remove('hidden');
-        });
-      });
-
-      document.querySelectorAll('.delete-result').forEach(button => {
-        button.addEventListener('click', handleDeleteResult);
-      });
-    }
-
-    async function handleDeleteResult(e) {
-      const id = e.currentTarget.getAttribute('data-id');
-      if (confirm('هل أنت متأكد من حذف هذه النتيجة؟')) {
-        try {
-          const response = await fetch(`/admin/delete-result/${id}`, { method: 'DELETE' });
-          const data = await response.json();
-          if (data.success) {
-            showSuccess('تم حذف النتيجة بنجاح');
-            loadData();
-          } else {
-            showError(data.message || 'حدث خطأ أثناء حذف النتيجة');
-          }
-        } catch (error) {
-          console.error('Error deleting result:', error);
-          showError('حدث خطأ أثناء حذف النتيجة');
-        }
-      }
-    }
-
-    // Event Listeners
-    document.getElementById('bookingFilter')?.addEventListener('change', loadData);
-    document.getElementById('inquiryFilter')?.addEventListener('change', loadData);
-
-    // Modal close buttons
-    const modalCloseButtons = [
-      'closeBookingModal', 'cancelBookingEdit', 'cancelDeleteBooking',
-      'closeInquiryModal', 'cancelInquiryResponse', 'cancelDeleteInquiry',
-      'closeResultModal', 'cancelResultEdit'
-    ];
-    modalCloseButtons.forEach(id => {
-      const btn = document.getElementById(id);
-      if (btn) btn.addEventListener('click', () => {
-        const modal = btn.closest('[id$="Modal"]');
-        if (modal) modal.classList.add('hidden');
-      });
-    });
-
-    // Form Submissions
-    document.getElementById('editBookingForm')?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const id = document.getElementById('editBookingId').value;
-      const status = document.getElementById('editBookingStatus').value;
-      const notes = document.getElementById('editBookingNotes').value;
-
-      try {
-        const response = await fetch(`/admin/update-booking/${id}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ status, notes })
-        });
-        const data = await response.json();
-        if (data.success) {
-          document.getElementById('editBookingModal').classList.add('hidden');
-          showSuccess('تم تحديث حالة الطلب بنجاح');
-          loadData();
-        } else {
-          showError(data.message || 'حدث خطأ أثناء حفظ التعديلات');
-        }
-      } catch (error) {
-        console.error('Error updating booking:', error);
-        showError('حدث خطأ أثناء حفظ التعديلات');
-      }
-    });
-
-    document.getElementById('sendMessageForm')?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('playerEmail').value;
-      const message = document.getElementById('messageContent').value;
-      const senderName = document.getElementById('senderName').value || 'Clan DH-ESPORTS';
-
-      try {
-        const response = await fetch('/admin/send-message', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, message, senderName })
-        });
-        const data = await response.json();
-        const responseDiv = document.getElementById('messageResponse');
-        responseDiv.classList.remove('hidden');
-        if (data.success) {
-          responseDiv.innerHTML = `<div class="rounded-2xl border border-emerald-400/30 bg-emerald-600/10 text-emerald-300 px-4 py-3">${data.message}</div>`;
-          document.getElementById('sendMessageForm').reset();
-          showSuccess('تم إرسال الرسالة بنجاح');
-        } else {
-          responseDiv.innerHTML = `<div class="rounded-2xl border border-rose-400/30 bg-rose-600/10 text-rose-300 px-4 py-3">${data.message}</div>`;
-          showError(data.message || 'حدث خطأ أثناء إرسال الرسالة');
-        }
-      } catch (error) {
-        console.error('Error sending message:', error);
-        showError('حدث خطأ أثناء إرسال الرسالة');
-      }
-    });
-
-    document.getElementById('uploadResultForm')?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append('playerPhone', document.getElementById('playerPhone').value);
-      formData.append('playerName', document.getElementById('playerName').value);
-      formData.append('resultFile', document.getElementById('resultFile').files[0]);
-
-      try {
-        const response = await fetch('/admin/upload-result', { method: 'POST', body: formData });
-        const data = await response.json();
-        const responseDiv = document.getElementById('uploadResponse');
-        responseDiv.classList.remove('hidden');
-        if (data.success) {
-          responseDiv.innerHTML = `<div class="rounded-2xl border border-emerald-400/30 bg-emerald-600/10 text-emerald-300 px-4 py-3">${data.message}</div>`;
-          document.getElementById('uploadResultForm').reset();
-          showSuccess('تم رفع النتيجة بنجاح');
-          loadData();
-        } else {
-          responseDiv.innerHTML = `<div class="rounded-2xl border border-rose-400/30 bg-rose-600/10 text-rose-300 px-4 py-3">${data.message}</div>`;
-          showError(data.message || 'حدث خطأ أثناء رفع الملف');
-        }
-      } catch (error) {
-        console.error('Error uploading result:', error);
-        showError('حدث خطأ أثناء رفع الملف');
-      }
-    });
-
-    document.getElementById('editResultForm')?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const submitBtn = e.target.querySelector('button[type="submit"]');
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'جاري الحفظ...'; }
-
-      try {
-        const formData = new FormData(e.target);
-        const id = document.getElementById('editResultId').value;
-        const playerPhone = document.getElementById('editPlayerPhone').value;
-        if (!id || !playerPhone) throw new Error('معرّف النتيجة ورقم الهاتف مطلوبان');
-        formData.append('id', id);
-        formData.append('playerPhone', playerPhone);
-        const playerName = document.getElementById('editPlayerName').value;
-        if (playerName) formData.append('playerName', playerName);
-
-        const response = await fetch('/admin/update-result', { method: 'POST', body: formData });
-        if (!response.ok) throw new Error('حدث خطأ في الخادم');
-        const data = await response.json();
-        if (data.success) {
-          document.getElementById('editResultModal').classList.add('hidden');
-          showSuccess(data.message || 'تم تحديث النتيجة بنجاح');
-          loadData();
-        } else {
-          throw new Error(data.message || 'فشل تحديث النتيجة');
-        }
-      } catch (error) {
-        console.error('Update failed:', error);
-        showError(error.message || 'حدث خطأ أثناء تحديث النتيجة');
-      } finally {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'حفظ التعديلات'; }
-      }
-    });
-
-    document.getElementById('respondInquiryForm')?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const id = document.getElementById('respondInquiryId').value;
-      const responseText = document.getElementById('inquiryResponse').value;
-
-      try {
-        const res = await fetch(`/admin/update-inquiry/${id}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ status: 'responded', response: responseText })
-        });
-        const data = await res.json();
-        if (data.success) {
-          document.getElementById('respondInquiryModal').classList.add('hidden');
-          document.getElementById('inquiryResponse').value = '';
-          showSuccess('تم إرسال الرد بنجاح');
-          loadData();
-        } else {
-          showError(data.message || 'حدث خطأ أثناء إرسال الرد');
-        }
-      } catch (error) {
-        console.error('Error responding to inquiry:', error);
-        showError('حدث خطأ أثناء إرسال الرد');
-      }
-    });
-
-    document.getElementById('confirmDeleteBooking')?.addEventListener('click', async () => {
-      const id = document.getElementById('deleteBookingId').value;
-      try {
-        const response = await fetch(`/admin/delete-booking/${id}`, { method: 'DELETE' });
-        const data = await response.json();
-        if (data.success) {
-          document.getElementById('deleteBookingModal').classList.add('hidden');
-          showSuccess('تم حذف الطلب بنجاح');
-          loadData();
-        } else {
-          showError(data.message || 'حدث خطأ أثناء حذف الطلب');
-        }
-      } catch (error) {
-        console.error('Error deleting booking:', error);
-        showError('حدث خطأ أثناء حذف الطلب');
-      }
-    });
-
-    document.getElementById('confirmDeleteInquiry')?.addEventListener('click', async () => {
-      const id = document.getElementById('deleteInquiryId').value;
-      try {
-        const response = await fetch(`/admin/delete-inquiry/${id}`, { method: 'DELETE' });
-        const data = await response.json();
-        if (data.success) {
-          document.getElementById('deleteInquiryModal').classList.add('hidden');
-          showSuccess('تم حذف الاستفسار بنجاح');
-          loadData();
-        } else {
-          showError(data.message || 'حدث خطأ أثناء حذف الاستفسار');
-        }
-      } catch (error) {
-        console.error('Error deleting inquiry:', error);
-        showError('حدث خطأ أثناء حذف الاستفسار');
-      }
-    });
-
-    document.getElementById('logoutBtn')?.addEventListener('click', async (e) => {
-      e.preventDefault();
-      try {
-        const response = await fetch('/admin/logout');
-        const data = await response.json();
-        if (data.success) window.location.href = '/login';
-      } catch (error) {
-        console.error('Logout error:', error);
-        showError('حدث خطأ أثناء تسجيل الخروج');
-      }
-    });
-
+    function toast(message, type="success"){ const host=document.getElementById("toastHost"); const el=document.createElement("div"); const base="px-4 py-3 rounded-2xl shadow-lg text-sm font-semibold border backdrop-blur flex items-center gap-2"; const styles=type==="success"?"bg-emerald-600/95 text-white border-emerald-400/30":"bg-rose-600/95 text-white border-rose-400/30"; const icon=type==="success"?'<i class="fas fa-check-circle"></i>':'<i class="fas fa-exclamation-circle"></i>'; el.className=base+" "+styles; el.innerHTML=icon+" "+message; host.appendChild(el); setTimeout(()=>{el.style.opacity="0"; el.style.transform="translateX(20px)"; el.style.transition="all .3s ease-out";},2700); setTimeout(()=>el.remove(),3100); }
+    function showSuccess(m){toast(m,"success");} function showError(m){toast(m,"error");}
+    function getStatusClass(s){if(s==='approved')return 'bg-emerald-600/20 text-emerald-300 border border-emerald-500/30'; if(s==='rejected')return 'bg-rose-600/20 text-rose-300 border border-rose-500/30'; return 'bg-amber-600/20 text-amber-300 border border-amber-500/30';}
+    function getStatusText(s){if(s==='approved')return 'مقبول'; if(s==='rejected')return 'مرفوض'; return 'قيد الانتظار';}
+    const darkBtn=document.getElementById('toggleDarkMode'); const moonIcon=darkBtn.querySelector('.fa-moon'); const sunIcon=darkBtn.querySelector('.fa-sun');
+    function applyDarkMode(){ const isDark=localStorage.getItem('darkMode')==='true'; if(isDark){ document.documentElement.classList.add('dark'); moonIcon.classList.add('hidden'); sunIcon.classList.remove('hidden'); } else{ document.documentElement.classList.remove('dark'); moonIcon.classList.remove('hidden'); sunIcon.classList.add('hidden'); } }
+    applyDarkMode(); darkBtn.addEventListener('click',()=>{ const isDark=!document.documentElement.classList.contains('dark'); if(isDark){ document.documentElement.classList.add('dark'); moonIcon.classList.add('hidden'); sunIcon.classList.remove('hidden'); } else{ document.documentElement.classList.remove('dark'); moonIcon.classList.remove('hidden'); sunIcon.classList.add('hidden'); } localStorage.setItem('darkMode',isDark); });
+    const sidebar=document.getElementById('sidebar'), backdropEl=document.getElementById('backdrop'), openSidebarMobile=document.getElementById('openSidebarMobile'), closeSidebarMobile=document.getElementById('closeSidebarMobile');
+    function openSidebar(){ sidebar.classList.remove('translate-x-full'); backdropEl.classList.remove('hidden'); document.body.style.overflow='hidden'; }
+    function closeSidebar(){ sidebar.classList.add('translate-x-full'); backdropEl.classList.add('hidden'); document.body.style.overflow=''; }
+    if(openSidebarMobile) openSidebarMobile.addEventListener('click',openSidebar); if(closeSidebarMobile) closeSidebarMobile.addEventListener('click',closeSidebar); if(backdropEl) backdropEl.addEventListener('click',closeSidebar);
+    const navItems=document.querySelectorAll('.nav-item'); function activateTab(tabId){ document.querySelectorAll('.tab-content').forEach(c=>c.classList.add('hidden')); const target=document.getElementById(tabId+'Tab'); if(target) target.classList.remove('hidden'); navItems.forEach(i=>i.classList.remove('active')); const active=document.querySelector(`.nav-item[data-tab="${tabId}"]`); if(active){ active.classList.add('active'); const titleSpan=active.querySelector('span.font-semibold'); if(titleSpan) document.getElementById('pageTitle').textContent=titleSpan.textContent.trim(); } if(window.innerWidth<1024) closeSidebar(); }
+    navItems.forEach(tab=>{ tab.addEventListener('click',(e)=>{ e.preventDefault(); activateTab(tab.getAttribute('data-tab')); }); }); activateTab('dashboard');
+    async function checkSession(){ try{ const res=await fetch('/admin/check-session'); const data=await res.json(); if(!data.loggedIn) window.location.href='/admin-login.html'; else loadData(); }catch(e){ window.location.href='/admin-login.html'; } }
+    async function loadData(){ try{ const res=await fetch('/admin/data'); const data=await res.json(); document.getElementById('totalBookings').textContent=data.bookings.length; document.getElementById('newInquiries').textContent=data.inquiries.filter(i=>i.status==='new').length; document.getElementById('approvedResults').textContent=data.results.length; const recent=data.bookings.slice(0,5); document.getElementById('recentBookings').innerHTML=recent.map(b=>`<tr class="table-row"><td class="px-4 sm:px-5 py-3">${b.name}</td><td class="px-4 sm:px-5 py-3">${b.phone}</td><td class="px-4 sm:px-5 py-3 hidden sm:table-cell">${b.duration}</td><td class="px-4 sm:px-5 py-3"><span class="inline-flex px-3 py-1 rounded-full text-xs font-bold ${getStatusClass(b.status)}">${getStatusText(b.status)}</span></td><td class="px-4 sm:px-5 py-3 text-gray-400 hidden md:table-cell">${new Date(b.createdAt).toLocaleDateString('ar-EG')}</td></tr>`).join(''); renderBookingsTable(data.bookings); renderInquiriesTable(data.inquiries); renderResultsTable(data.results); }catch(e){ showError('خطأ في تحميل البيانات'); } }
+    function renderBookingsTable(bookings){ const filter=document.getElementById('bookingFilter').value; let filtered=filter!=='all'?bookings.filter(b=>b.status===filter):bookings; document.getElementById('bookingsTable').innerHTML=filtered.map(b=>`<tr class="table-row"><td class="px-4 py-3">${b.name}</td><td class="px-4 py-3 hidden sm:table-cell">${b.email}</td><td class="px-4 py-3">${b.phone}</td><td class="px-4 py-3 hidden lg:table-cell">${b.scrim}</td><td class="px-4 py-3">${b.duration}</td><td class="px-4 py-3 hidden md:table-cell">${b.age}</td><td class="px-4 py-3"><span class="inline-flex px-3 py-1 rounded-full text-xs font-bold ${getStatusClass(b.status)}">${getStatusText(b.status)}</span></td><td class="px-4 py-3"><button class="edit-booking action-btn text-indigo-400" data-id="${b.id}" data-status="${b.status}" data-notes="${b.notes||''}"><i class="fas fa-edit"></i><span class="hidden sm:inline mr-1">تعديل</span></button><button class="delete-booking action-btn text-rose-400" data-id="${b.id}"><i class="fas fa-trash"></i><span class="hidden sm:inline mr-1">حذف</span></button>${b.gameVideo?`<a href="${b.gameVideo}" target="_blank" class="action-btn text-sky-400"><i class="fas fa-eye"></i></a><a href="${b.gameVideo}" download class="action-btn text-emerald-400"><i class="fas fa-download"></i></a>`:''}</td></tr>`).join(''); attachBookingEvents(); }
+    function attachBookingEvents(){ document.querySelectorAll('.edit-booking').forEach(btn=>btn.addEventListener('click',()=>{ document.getElementById('editBookingId').value=btn.dataset.id; document.getElementById('editBookingStatus').value=btn.dataset.status; document.getElementById('editBookingNotes').value=btn.dataset.notes||''; document.getElementById('editBookingModal').classList.remove('hidden'); })); document.querySelectorAll('.delete-booking').forEach(btn=>btn.addEventListener('click',()=>{ document.getElementById('deleteBookingId').value=btn.dataset.id; document.getElementById('deleteBookingModal').classList.remove('hidden'); })); }
+    function renderInquiriesTable(inquiries){ const filter=document.getElementById('inquiryFilter').value; let filtered=filter!=='all'?inquiries.filter(i=>filter==='new'?i.status==='new':i.status!=='new'):inquiries; document.getElementById('inquiriesTable').innerHTML=filtered.map(i=>`<tr class="table-row"><td class="px-4 py-3">${i.name}</td><td class="px-4 py-3 hidden sm:table-cell">${i.email}</td><td class="px-4 py-3">${i.phone}</td><td class="px-4 py-3"><div class="max-w-xs truncate">${i.message}</div></td><td class="px-4 py-3"><span class="inline-flex px-3 py-1 rounded-full text-xs font-bold ${i.status==='new'?'bg-amber-600/20 text-amber-300':'bg-emerald-600/20 text-emerald-300'}">${i.status==='new'?'جديد':'تم الرد'}</span></td><td class="px-4 py-3">${i.status==='new'?`<button class="respond-inquiry action-btn text-emerald-400" data-id="${i.id}"><i class="fas fa-reply"></i><span class="hidden sm:inline mr-1">رد</span></button>`:''}<button class="delete-inquiry action-btn text-rose-400" data-id="${i.id}"><i class="fas fa-trash"></i><span class="hidden sm:inline mr-1">حذف</span></button>${i.response?`<button class="view-response action-btn text-sky-400" data-response="${i.response.replace(/"/g, '&quot;')}"><i class="fas fa-eye"></i><span class="hidden sm:inline mr-1">عرض</span></button>`:''}</td></tr>`).join(''); attachInquiryEvents(); }
+    function attachInquiryEvents(){ document.querySelectorAll('.respond-inquiry').forEach(btn=>btn.addEventListener('click',()=>{ document.getElementById('respondInquiryId').value=btn.dataset.id; document.getElementById('respondInquiryModal').classList.remove('hidden'); })); document.querySelectorAll('.delete-inquiry').forEach(btn=>btn.addEventListener('click',()=>{ document.getElementById('deleteInquiryId').value=btn.dataset.id; document.getElementById('deleteInquiryModal').classList.remove('hidden'); })); document.querySelectorAll('.view-response').forEach(btn=>btn.addEventListener('click',()=>alert('الرد:\n\n'+btn.dataset.response))); }
+    function renderResultsTable(results){ const tbody=document.getElementById('resultsTable'); if(!results.length){ tbody.innerHTML='<tr><td colspan="4" class="px-5 py-6 text-center text-gray-500">لا توجد نتائج معتمدة بعد</td></tr>'; return; } tbody.innerHTML=results.map(r=>`<tr class="table-row"><td class="px-4 py-3">${r.playerName||'لاعب'}</td><td class="px-4 py-3">${r.playerPhone||'غير متوفر'}</td><td class="px-4 py-3 hidden sm:table-cell text-gray-400">${r.uploadedAt?new Date(r.uploadedAt).toLocaleDateString('ar-EG'):'-'}</td><td class="px-4 py-3">${r.fileUrl?`<a href="${r.fileUrl}" target="_blank" class="action-btn text-sky-400"><i class="fas fa-eye"></i><span class="hidden sm:inline mr-1">عرض</span></a>`:''}<button class="edit-result action-btn text-amber-400" data-id="${r.id}" data-phone="${r.playerPhone||''}" data-name="${r.playerName||''}"><i class="fas fa-edit"></i><span class="hidden sm:inline mr-1">تعديل</span></button><button class="delete-result action-btn text-rose-400" data-id="${r.id}"><i class="fas fa-trash"></i><span class="hidden sm:inline mr-1">حذف</span></button></td></tr>`).join(''); attachResultEvents(); }
+    function attachResultEvents(){ document.querySelectorAll('.edit-result').forEach(btn=>btn.addEventListener('click',()=>{ document.getElementById('editResultId').value=btn.dataset.id; document.getElementById('editPlayerPhone').value=btn.dataset.phone||''; document.getElementById('editPlayerName').value=btn.dataset.name||''; document.getElementById('editResultModal').classList.remove('hidden'); })); document.querySelectorAll('.delete-result').forEach(btn=>btn.addEventListener('click',async()=>{ if(confirm('حذف النتيجة؟')){ try{ const res=await fetch(`/admin/delete-result/${btn.dataset.id}`,{method:'DELETE'}); const data=await res.json(); if(data.success){ showSuccess('تم الحذف'); loadData(); } else showError(data.message); }catch(e){ showError('خطأ'); } } })); }
+    document.getElementById('bookingFilter')?.addEventListener('change',loadData); document.getElementById('inquiryFilter')?.addEventListener('change',loadData);
+    ['closeBookingModal','cancelBookingEdit','cancelDeleteBooking','closeInquiryModal','cancelInquiryResponse','cancelDeleteInquiry','closeResultModal','cancelResultEdit'].forEach(id=>{ const btn=document.getElementById(id); if(btn) btn.addEventListener('click',()=>{ const modal=btn.closest('[id$="Modal"]'); if(modal) modal.classList.add('hidden'); }); });
+    document.getElementById('editBookingForm')?.addEventListener('submit',async(e)=>{ e.preventDefault(); const id=document.getElementById('editBookingId').value, status=document.getElementById('editBookingStatus').value, notes=document.getElementById('editBookingNotes').value; try{ const res=await fetch(`/admin/update-booking/${id}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({status,notes})}); const data=await res.json(); if(data.success){ document.getElementById('editBookingModal').classList.add('hidden'); showSuccess('تم التحديث'); loadData(); } else showError(data.message); }catch(e){ showError('خطأ'); } });
+    document.getElementById('sendMessageForm')?.addEventListener('submit',async(e)=>{ e.preventDefault(); try{ const res=await fetch('/admin/send-message',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:document.getElementById('playerEmail').value,message:document.getElementById('messageContent').value,senderName:document.getElementById('senderName').value||'ENERGY ACADEMY'})}); const data=await res.json(); document.getElementById('messageResponse').classList.remove('hidden'); if(data.success){ document.getElementById('messageResponse').innerHTML=`<div class="rounded-2xl border border-emerald-400/30 bg-emerald-600/10 text-emerald-300 px-4 py-3">${data.message}</div>`; showSuccess('تم الإرسال'); document.getElementById('sendMessageForm').reset(); } else showError(data.message); }catch(e){ showError('فشل الإرسال'); } });
+    document.getElementById('uploadResultForm')?.addEventListener('submit',async(e)=>{ e.preventDefault(); const fd=new FormData(); fd.append('playerPhone',document.getElementById('playerPhone').value); fd.append('playerName',document.getElementById('playerName').value); fd.append('resultFile',document.getElementById('resultFile').files[0]); try{ const res=await fetch('/admin/upload-result',{method:'POST',body:fd}); const data=await res.json(); const respDiv=document.getElementById('uploadResponse'); respDiv.classList.remove('hidden'); if(data.success){ respDiv.innerHTML=`<div class="rounded-2xl border border-emerald-400/30 bg-emerald-600/10 text-emerald-300 px-4 py-3">${data.message}</div>`; showSuccess('تم الرفع'); document.getElementById('uploadResultForm').reset(); loadData(); } else showError(data.message); }catch(e){ showError('خطأ'); } });
+    document.getElementById('respondInquiryForm')?.addEventListener('submit',async(e)=>{ e.preventDefault(); const id=document.getElementById('respondInquiryId').value, responseText=document.getElementById('inquiryResponse').value; try{ const res=await fetch(`/admin/update-inquiry/${id}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:'responded',response:responseText})}); const data=await res.json(); if(data.success){ document.getElementById('respondInquiryModal').classList.add('hidden'); showSuccess('تم الرد'); loadData(); } else showError(data.message); }catch(e){ showError('خطأ'); } });
+    document.getElementById('confirmDeleteBooking')?.addEventListener('click',async()=>{ const id=document.getElementById('deleteBookingId').value; try{ const res=await fetch(`/admin/delete-booking/${id}`,{method:'DELETE'}); const data=await res.json(); if(data.success){ document.getElementById('deleteBookingModal').classList.add('hidden'); showSuccess('تم حذف الطلب'); loadData(); } else showError(data.message); }catch(e){ showError('خطأ'); } });
+    document.getElementById('confirmDeleteInquiry')?.addEventListener('click',async()=>{ const id=document.getElementById('deleteInquiryId').value; try{ const res=await fetch(`/admin/delete-inquiry/${id}`,{method:'DELETE'}); const data=await res.json(); if(data.success){ document.getElementById('deleteInquiryModal').classList.add('hidden'); showSuccess('تم حذف الاستفسار'); loadData(); } else showError(data.message); }catch(e){ showError('خطأ'); } });
+    document.getElementById('editResultForm')?.addEventListener('submit',async(e)=>{ e.preventDefault(); const fd=new FormData(e.target); const id=document.getElementById('editResultId').value; fd.append('id',id); try{ const res=await fetch('/admin/update-result',{method:'POST',body:fd}); const data=await res.json(); if(data.success){ document.getElementById('editResultModal').classList.add('hidden'); showSuccess('تم تحديث النتيجة'); loadData(); } else showError(data.message); }catch(e){ showError('خطأ'); } });
+    document.getElementById('logoutBtn')?.addEventListener('click',async(e)=>{ e.preventDefault(); const res=await fetch('/admin/logout'); const data=await res.json(); if(data.success) window.location.href='/login'; });
     checkSession();
   </script>
 </body>
