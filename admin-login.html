@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>تسجيل دخول • DH-ESPORTS</title>
+
+  <!-- Tailwind + Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+  <!-- خط عربي أنيق -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #0a0f1a 0%, #0d1525 50%, #0a0f1a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+      position: relative;
+    }
+
+    /* تأثير الشبكة الرقمية */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    /* الوضع النهاري */
+    body.light-mode {
+      background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 50%, #e0e7ff 100%);
+    }
+
+    body.light-mode::before {
+      background-image: 
+        linear-gradient(rgba(0, 153, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 153, 255, 0.05) 1px, transparent 1px);
+    }
+
+    /* الحاوية الزجاجية الرئيسية */
+    .glass-container {
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 212, 255, 0.1) inset;
+      transition: all 0.4s ease;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .glass-container:hover {
+      border-color: #00d4ff;
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.3), 0 25px 45px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* أيقونة الرأس */
+    .icon-wrapper {
+      background: linear-gradient(135deg, rgba(0, 153, 255, 0.2), rgba(0, 212, 255, 0.1));
+      border: 2px solid #00d4ff;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+
+    /* حقول الإدخال */
+    .input-field {
+      background: rgba(0, 0, 0, 0.4) !important;
+      border: 1px solid #1e2a3e !important;
+      color: #e2e8f0 !important;
+      border-radius: 1rem !important;
+      transition: all 0.3s ease;
+      padding: 0.85rem 1rem !important;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    .input-field:focus {
+      border-color: #00d4ff !important;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4) !important;
+      outline: none;
+    }
+
+    /* تسميات الحقول */
+    .input-label {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      pointer-events: none;
+      transition: 0.3s;
+      background: transparent;
+      padding: 0 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    .input-wrapper input:focus ~ .input-label,
+    .input-wrapper input:not(:placeholder-shown) ~ .input-label {
+      top: 0;
+      font-size: 0.7rem;
+      color: #00d4ff;
+      background: rgba(17, 24, 39, 0.95);
+      border-radius: 0.5rem;
+      padding: 0 0.5rem;
+      transform: translateY(-50%);
+    }
+
+    /* زر النيون المميز */
+    .neon-button {
+      background: linear-gradient(135deg, #0099ff, #00d4ff);
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px #0099ff;
+      color: white;
+      font-weight: 700;
+      padding: 0.85rem 1.5rem;
+      border-radius: 9999px;
+      width: 100%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .neon-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .neon-button:hover::before {
+      left: 100%;
+    }
+
+    .neon-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px #00d4ff, 0 0 35px #0099ff;
+    }
+
+    .neon-button:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .neon-button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    /* زر تبديل الوضع */
+    .theme-toggle {
+      background: rgba(0, 212, 255, 0.15);
+      border: 1px solid #00d4ff;
+      color: #e2e8f0;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .theme-toggle:hover {
+      background: #00d4ff;
+      color: #0a0f1a;
+    }
+
+    /* رسالة الخطأ */
+    .error-message {
+      color: #ff6b6b;
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+      text-align: center;
+      background: rgba(255, 107, 107, 0.1);
+      padding: 0.5rem;
+      border-radius: 0.75rem;
+      border-right: 3px solid #ff6b6b;
+    }
+
+    /* تشييك بوكس مخصص */
+    .checkbox-custom {
+      accent-color: #00d4ff;
+      width: 1.1rem;
+      height: 1.1rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+    }
+
+    /* وضع الفاتح */
+    body.light-mode .glass-container {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(0, 153, 255, 0.4);
+    }
+
+    body.light-mode .input-field {
+      background: rgba(255, 255, 255, 0.9) !important;
+      border-color: #cbd5e1 !important;
+      color: #1e293b !important;
+    }
+
+    body.light-mode .input-label {
+      color: #64748b;
+    }
+
+    body.light-mode .input-wrapper input:focus ~ .input-label,
+    body.light-mode .input-wrapper input:not(:placeholder-shown) ~ .input-label {
+      background: white;
+      color: #0099ff;
+    }
+
+    body.light-mode .theme-toggle {
+      background: rgba(0, 153, 255, 0.15);
+      color: #1e293b;
+      border-color: #0099ff;
+    }
+
+    body.light-mode .theme-toggle:hover {
+      background: #0099ff;
+      color: white;
+    }
+
+    body.light-mode .icon-wrapper {
+      background: linear-gradient(135deg, rgba(0, 153, 255, 0.2), rgba(0, 212, 255, 0.1));
+    }
+
+    body.light-mode h2 {
+      color: #1e293b;
+    }
+
+    /* سبينر التحميل */
+    .loading-spinner {
+      display: inline-block;
+      width: 1.1rem;
+      height: 1.1rem;
+      border: 2px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* تحسين للشاشات الصغيرة */
+    @media (max-width: 480px) {
+      .glass-container {
+        width: 92%;
+        padding: 1.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      .theme-toggle span {
+        display: none;
+      }
+      .theme-toggle i {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- بطاقة تسجيل الدخول -->
+  <div class="glass-container w-[90%] max-w-md rounded-3xl p-6 md:p-8 relative">
+    
+    <!-- أيقونة الكراون المميزة -->
+    <div class="flex justify-center mb-5">
+      <div class="icon-wrapper w-16 h-16 rounded-2xl flex items-center justify-center text-4xl transition-all duration-300">
+        <i class="fas fa-crown text-primary-light" style="color: #00d4ff;"></i>
+      </div>
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-6" style="background: linear-gradient(135deg, #00d4ff, #0099ff); background-clip: text; -webkit-background-clip: text; color: transparent;">
+      مرحباً
+    </h2>
+
+    <form id="loginForm" autocomplete="off">
+      <!-- حقل اسم المستخدم -->
+      <div class="input-wrapper relative mb-7">
+        <input type="text" id="username" name="username" required placeholder=" "
+               class="input-field peer" />
+        <label for="username" class="input-label">اسم المستخدم</label>
+      </div>
+
+      <!-- حقل كلمة المرور -->
+      <div class="input-wrapper relative mb-2">
+        <input type="password" id="password" name="password" required placeholder=" "
+               class="input-field peer" />
+        <label for="password" class="input-label">كلمة المرور</label>
+      </div>
+
+      <!-- إظهار كلمة المرور -->
+      <div class="flex items-center gap-2 mt-2 mb-6">
+        <input type="checkbox" id="showPassword" class="checkbox-custom" />
+        <label for="showPassword" class="text-sm text-gray-400 cursor-pointer transition hover:text-primary-light">إظهار كلمة المرور</label>
+      </div>
+
+      <!-- زر تسجيل الدخول -->
+      <div class="mt-6">
+        <button type="submit" id="submitBtn" class="neon-button">
+          <span class="inline-flex items-center justify-center gap-2">
+            <i class="fas fa-sign-in-alt"></i> دخول
+          </span>
+        </button>
+      </div>
+
+      <!-- رسالة الخطأ -->
+      <div id="errorMsg" class="error-message min-h-[3rem] hidden"></div>
+    </form>
+
+    <!-- خيارات إضافية -->
+    <div class="flex justify-between items-center mt-6 pt-2 text-xs text-gray-500">
+      <span>© 2026 DH-ESPORTS</span>
+      <button id="darkModeToggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+        <span class="hidden sm:inline">الوضع الليلي</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ------------------- تهيئة الوضع (داكن / فاتح) -------------------
+    function initTheme() {
+      const savedTheme = localStorage.getItem('dhTheme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+        updateThemeButton(true);
+      } else {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+        updateThemeButton(false);
+      }
+    }
+
+    function updateThemeButton(isLight) {
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (isLight) {
+        toggleBtn.innerHTML = '<i class="fas fa-sun"></i> <span class="hidden sm:inline">الوضع النهاري</span>';
+      } else {
+        toggleBtn.innerHTML = '<i class="fas fa-moon"></i> <span class="hidden sm:inline">الوضع الليلي</span>';
+      }
+    }
+
+    // تبديل الوضع
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-mode');
+      document.body.classList.toggle('dark-mode', !isLight);
+      localStorage.setItem('dhTheme', isLight ? 'light' : 'dark');
+      updateThemeButton(isLight);
+    });
+
+    initTheme();
+
+    // ------------------- إظهار/إخفاء كلمة المرور -------------------
+    const showPasswordCheckbox = document.getElementById('showPassword');
+    const passwordInput = document.getElementById('password');
+    
+    showPasswordCheckbox.addEventListener('change', function() {
+      passwordInput.type = this.checked ? 'text' : 'password';
+    });
+
+    // ------------------- معالجة تسجيل الدخول -------------------
+    const loginForm = document.getElementById('loginForm');
+    const errorMsgDiv = document.getElementById('errorMsg');
+    const submitBtn = document.getElementById('submitBtn');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // تعطيل الزر وعرض حالة التحميل
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="inline-flex items-center gap-2"><span class="loading-spinner"></span> جاري التحقق...</span>';
+      errorMsgDiv.classList.add('hidden');
+      errorMsgDiv.textContent = '';
+
+      const data = {
+        username: loginForm.username.value.trim(),
+        password: loginForm.password.value.trim()
+      };
+
+      // التحقق من صحة الإدخال
+      if (!data.username || !data.password) {
+        showError('يرجى إدخال اسم المستخدم وكلمة المرور');
+        resetButton();
+        return;
+      }
+
+      try {
+        const res = await fetch('/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (res.ok && result.success) {
+          // التحقق من صحة الجلسة
+          const sessionCheck = await fetch('/admin/check-session');
+          const sessionData = await sessionCheck.json();
+          
+          if (sessionData.loggedIn) {
+            window.location.href = '/admin/dashboard';
+          } else {
+            showError('فشل التحقق من الجلسة، يرجى المحاولة مرة أخرى');
+          }
+        } else {
+          showError(result.message || 'اسم المستخدم أو كلمة المرور غير صحيحة');
+        }
+      } catch (err) {
+        console.error('Login error:', err);
+        showError('تعذر الاتصال بالخادم. يرجى المحاولة لاحقاً');
+      } finally {
+        resetButton();
+      }
+    });
+
+    function showError(message) {
+      errorMsgDiv.textContent = message;
+      errorMsgDiv.classList.remove('hidden');
+    }
+
+    function resetButton() {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<span class="inline-flex items-center justify-center gap-2"><i class="fas fa-sign-in-alt"></i> دخول إلى لوحة التحكم</span>';
+    }
+
+    // عند الضغط على Enter في أي حقل
+    const inputs = document.querySelectorAll('#username, #password');
+    inputs.forEach(input => {
+      input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          loginForm.dispatchEvent(new Event('submit'));
+        }
+      });
+    });
+
+    // تحسين التجربة: عند التركيز على الحقول
+    const allInputs = document.querySelectorAll('.input-field');
+    allInputs.forEach(input => {
+      input.addEventListener('focus', () => {
+        input.parentElement.classList.add('focused');
+      });
+      input.addEventListener('blur', () => {
+        if (!input.value) {
+          input.parentElement.classList.remove('focused');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
